@@ -19,7 +19,12 @@ class Post extends Model
 
     public function addComment($body){
 
-        auth()->user()->comments( new Comment(request(['body']) ) )->save(); 
+        $comment = new Comment;
+        $comment->body = $body;
+        $comment->user_id = auth()->id();
+
+        $this->comments()->save( $comment ) ;
+        
 
     }
 
