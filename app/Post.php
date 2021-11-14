@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 use App\Comment;
+use App\Tag;
 
 class Post extends Model
 {
@@ -49,6 +50,13 @@ class Post extends Model
                     ->orderByRaw('min(created_at) desc')
                     ->get()
                     ->toArray();
+    }
+
+
+    public function tags(){
+        //many-to-many relation
+        return $this->belongsToMany(Tag::class);
+
     }
 
 }

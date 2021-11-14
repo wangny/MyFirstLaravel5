@@ -19,7 +19,13 @@
 
   <body>
 
-    <div class="container">
+    @if($flash = session('message'))
+    <div class="alert alert-success">
+      {{ $flash }}
+    </div>
+    @endif
+
+    <div id='flash-message' class="container">
       @include('layouts.app')
       @include('layout.nav')
     </div> 

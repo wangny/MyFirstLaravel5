@@ -18,6 +18,7 @@ class AppServiceProvider extends ServiceProvider
             //kindof callback function
             $view->with('archives', \App\Post::archives());
             //register archives to view, so this will be watchiing
+            $view->with('tags', \App\Tag::all()->pluck('name'));   //has('posts')
         });
     }
 
